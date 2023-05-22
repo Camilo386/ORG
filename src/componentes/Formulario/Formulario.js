@@ -1,3 +1,4 @@
+import { useState } from "react";
 import ListaOpciones from "../ListaOpciones";
 import CampoTexto from "../CampoTexto";
 import Boton from "../Boton";
@@ -5,18 +6,52 @@ import "./Formulario.css"
 
 const Formulario = () => {
 
+    const [nombre,actualizarNombre] = useState("");
+    const [puesto,actualizarPuesto] = useState("");
+    const [foto,actualizarFoto] = useState("");
+    const [equipo,actualizarEquipo] = useState("");
+    
+    
     const manejarEnvio = (evento) => {
         evento.preventDefault();
-        console.log("Manejar el envío",evento)
+        let datosAEnviar = {
+            nombre,
+            puesto,
+            foto,
+            equipo
+        }
+
+        console.log(datosAEnviar);
     }
 
     return <section className="formulario">
         <form onSubmit={manejarEnvio}>
             <h2>Rellena el formulario para crear el colaborador.</h2>
-            <CampoTexto titulo="Nombre" placeholder="Ingresar el nombre" required/>
-            <CampoTexto titulo='Puesto' placeholder="Ingrese el puesto" required/>
-            <CampoTexto titulo='Foto' placeholder="Ingresar enlace de foto" required/>
-            <ListaOpciones/>
+            <CampoTexto 
+                titulo="Nombre"
+                placeholder="Ingresar el nombre" 
+                valor={nombre} 
+                actualizarValor={actualizarNombre}
+                required
+            />
+            <CampoTexto 
+                titulo='Puesto' 
+                placeholder="Ingrese el puesto" 
+                valor={puesto} 
+                actualizarValor={actualizarPuesto}
+                required
+            />
+            <CampoTexto 
+                titulo='Foto' 
+                placeholder="Ingresar enlace de foto" 
+                valor={foto} 
+                actualizarValor={actualizarFoto}
+                required
+            />
+            <ListaOpciones
+                valor={equipo}
+                actualizarEquipo={actualizarEquipo}
+            />
             <Boton>
                 Crear
             </Boton>
