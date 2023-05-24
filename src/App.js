@@ -5,10 +5,34 @@ import Formulario from './componentes/Formulario/Formulario';
 import Header from './componentes/Header/Header';
 import MiOrg from './componentes/MiOrg';
 import Equipo from './componentes/Equipo';
+import Footer from './componentes/Footer';
 
 function App() {
-  const [mostrarFormulario,actualizarMostar] = useState(false);
-  const [colaboradores,actualizarColaboradores] = useState([]);
+  const [mostrarFormulario,actualizarMostar] = useState(false );
+  const [colaboradores,actualizarColaboradores] = useState([{
+    equipo:"Front End",
+    foto:"https://github.com/Camilo386.png",
+    nombre:"Juan Camilo Agudelo",
+    puesto:"Estudiante"
+  },
+  {
+    equipo:"Programación",
+    foto:"https://github.com/Camilo386.png",
+    nombre:"Juan Camilo Agudelo",
+    puesto:"Estudiante"
+  },
+  {
+    equipo:"Devops",
+    foto:"https://github.com/Camilo386.png",
+    nombre:"Juan Camilo Agudelo",
+    puesto:"Estudiante"
+  },
+  {
+    equipo:"Móvil",
+    foto:"https://github.com/Camilo386.png",
+    nombre:"Juan Camilo Agudelo",
+    puesto:"Estudiante"
+  }]);
   //Ternario --> condicion ? seMuestra : noSeMuestra
   //Condicion && seMuestra
 
@@ -22,7 +46,10 @@ function App() {
     //Spread operator
     actualizarColaboradores([...colaboradores,colaborador])
   }
-
+  //Elimiar colaborador
+  const eliminarColaborador = () =>{
+    console.log("Eliminar colaborador")
+  }
 
   const equipos = [
 
@@ -33,8 +60,8 @@ function App() {
     },
     {
       titulo: "Front End",
-      colorPrimario: "#82CFFA8",
-      colorSecundario: "#E8F8FF " 
+      colorPrimario: "#82CFFA",
+      colorSecundario: "#E8F8FF" 
     },
     {
       titulo: "Data Science",
@@ -63,7 +90,6 @@ function App() {
     },
   ]
 
-
   return (
     <div className="App">
       <Header/>
@@ -80,10 +106,11 @@ function App() {
         datos={equipo} 
         key={equipo.titulo}
         colaboradores={colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)}
+        eliminarColaborador={eliminarColaborador}
         />
         )
       }
-
+      <Footer/>
     </div>
   );
 }

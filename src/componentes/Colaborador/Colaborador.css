@@ -41,3 +41,8 @@
     font-weight: 400;
     margin: 0;
 }
+
+.eliminar{
+    max-width: 100%;
+    padding-left: 90%;
+}
