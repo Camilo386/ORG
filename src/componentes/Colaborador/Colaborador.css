@@ -1,6 +1,7 @@
 .colaborador {
     width: 280px;
     margin-bottom: 24px;
+    position: relative;
 }
 
 .colaborador .encabezado {
@@ -43,6 +44,12 @@
 }
 
 .eliminar{
-    max-width: 100%;
-    padding-left: 90%;
+    position:absolute;
+    top: -15px;
+    right: -15px;
+    cursor: pointer;;
+}
+
+.fav{
+    cursor: pointer;
 }
